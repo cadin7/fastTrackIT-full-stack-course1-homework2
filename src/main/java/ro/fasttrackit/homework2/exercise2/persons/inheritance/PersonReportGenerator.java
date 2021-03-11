@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 
 abstract class PersonReportGenerator {
-
     public void generateReport(String outputFile) throws IOException {
         writeReport(readPersons(), outputFile);
     }
@@ -31,12 +30,8 @@ abstract class PersonReportGenerator {
 
     private void writeLineInOrder(BufferedWriter writer, HashMap<AgeStages, List<String>> line, AgeStages stage) {
         try {
-            writer.write(
-                    stage.getMinAge() +
-                            "-" +
-                            stage.getMaxAge() +
-                            ": " +
-                            line.get(stage).toString().replaceAll("(^\\[|]$)", "")
+            writer.write(stage.getAgeRange() +
+                    line.get(stage).toString().replaceAll("(^\\[|]$)", "")
             );
             writer.newLine();
         } catch (IOException e) {

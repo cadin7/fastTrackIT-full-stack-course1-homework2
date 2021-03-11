@@ -36,12 +36,8 @@ public class ReportGenerator {
 
     private void writeLineInOrder(BufferedWriter writer, HashMap<AgeStages, List<String>> line, AgeStages stage) {
         try {
-            writer.write(
-                    stage.getMinAge() +
-                            "-" +
-                            stage.getMaxAge() +
-                            ": " +
-                            line.get(stage).toString().replaceAll("(^\\[|]$)", "")
+            writer.write(stage.getAgeRange() +
+                    line.get(stage).toString().replaceAll("(^\\[|]$)", "")
             );
             writer.newLine();
         } catch (IOException e) {

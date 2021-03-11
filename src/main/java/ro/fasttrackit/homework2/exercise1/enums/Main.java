@@ -10,7 +10,8 @@ public class Main {
 
     private static void printWeight(CelestialBodies celestialBody) {
         System.out.println(
-                String.format("%.2f", celestialBody.calculateWeight(66.5)) +
+                String.format("%.2f",
+                        celestialBody.calculateWeight(66.5)) +
                         "kg on " +
                         celestialBody.name()
         );

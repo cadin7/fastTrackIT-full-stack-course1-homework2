@@ -20,7 +20,6 @@ public class FilePersonReportGenerator extends PersonReportGenerator {
     public CategorizedPersons readPersons() {
         try {
             Files.lines(Path.of(sourceFile)).forEach(this::readPerson);
-            return categorizedPersons;
         } catch (IOException e) {
             System.out.println("Could not read from file" + sourceFile);
         }
@@ -34,6 +33,7 @@ public class FilePersonReportGenerator extends PersonReportGenerator {
                         personInfo[0],
                         personInfo[1],
                         Integer.parseInt(personInfo[2])
-                ));
+                )
+        );
     }
 }
