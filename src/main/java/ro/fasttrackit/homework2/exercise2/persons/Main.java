@@ -20,7 +20,6 @@ public class Main {
         var inhFileGenerator = new FilePersonReportGenerator("src/main/resources/people.txt");
         inhFileGenerator.generateReport("inh_file.txt");
 
-        FromMemoryReportGenerator inhMemoryGenerator = new FromMemoryReportGenerator();
         new FromMemoryPersonReportGenerator().generateReport("inh_memory.txt");
     }
 }

@@ -17,8 +17,8 @@ abstract class PersonReportGenerator {
 
     private void writeReport(CategorizedPersons persons, String outputFile) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-            if (!persons.getMap().isEmpty()) {
-                writeLine(writer, persons.getMap());
+            if (!persons.getCategorizedPersons().isEmpty()) {
+                writeLine(writer, persons.getCategorizedPersons());
             }
         }
     }
