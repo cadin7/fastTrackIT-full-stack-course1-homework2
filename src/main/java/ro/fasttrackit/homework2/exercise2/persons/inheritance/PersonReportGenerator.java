@@ -31,7 +31,9 @@ abstract class PersonReportGenerator {
     private void writeLineInOrder(BufferedWriter writer, HashMap<AgeStages, List<String>> line, AgeStages stage) {
         try {
             writer.write(stage.getAgeRange() +
-                    line.get(stage).toString().replaceAll("(^\\[|]$)", "")
+                    line.get(stage)
+                            .toString()
+                            .replaceAll("(^\\[|]$)", "")
             );
             writer.newLine();
         } catch (IOException e) {

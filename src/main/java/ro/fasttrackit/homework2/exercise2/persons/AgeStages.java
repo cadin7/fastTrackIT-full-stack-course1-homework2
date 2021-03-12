@@ -1,6 +1,5 @@
 package ro.fasttrackit.homework2.exercise2.persons;
 
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public enum AgeStages {
@@ -22,10 +21,11 @@ public enum AgeStages {
         }
     }
 
-    public static Optional<AgeStages> of(int personAge) {
+    public static AgeStages of(int personAge) {
         return Stream.of(values())
                 .filter(val -> personAge > val.getMinAge() && personAge <= val.getMaxAge())
-                .findFirst();
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Invalid age!"));
     }
 
     public int getMinAge() {

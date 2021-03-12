@@ -6,34 +6,37 @@ import ro.fasttrackit.homework2.exercise2.persons.Person;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class FileReportGenerator implements PersonProvider {
     private final String sourceFile;
-    private final CategorizedPersons categorizedPersons;
 
     public FileReportGenerator(String sourceFile) {
         this.sourceFile = sourceFile;
-        this.categorizedPersons = new CategorizedPersons();
     }
 
     @Override
     public CategorizedPersons readPersons() {
         try {
-            Files.lines(Path.of(sourceFile)).forEach(this::readPerson);
+            return new CategorizedPersons(
+                    Files.lines(Path.of(sourceFile))
+                            .map(this::readPerson)
+                            .collect(toList())
+            );
         } catch (IOException e) {
             System.out.println("Could not read from file" + sourceFile);
         }
-        return categorizedPersons;
+        return new CategorizedPersons(List.of());
     }
 
-    private void readPerson(String line) {
+    private Person readPerson(String line) {
         String[] personInfo = line.split(",");
-        categorizedPersons.addPersonToResult(
-                new Person(
-                        personInfo[0],
-                        personInfo[1],
-                        Integer.parseInt(personInfo[2])
-                )
+        return new Person(
+                personInfo[0],
+                personInfo[1],
+                Integer.parseInt(personInfo[2])
         );
     }
 }

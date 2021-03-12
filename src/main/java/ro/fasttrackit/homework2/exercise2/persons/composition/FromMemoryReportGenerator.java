@@ -3,15 +3,19 @@ package ro.fasttrackit.homework2.exercise2.persons.composition;
 import ro.fasttrackit.homework2.exercise2.persons.CategorizedPersons;
 import ro.fasttrackit.homework2.exercise2.persons.Person;
 
+import java.util.List;
+
 public class FromMemoryReportGenerator implements PersonProvider {
     @Override
     public CategorizedPersons readPersons() {
-        return new CategorizedPersons()
-                .addPersonToResult(new Person("Han", "Solo", 33))
-                .addPersonToResult(new Person("Hun", "Cute", 53))
-                .addPersonToResult(new Person("Kan", "Nibal", 99))
-                .addPersonToResult(new Person("Tet", "Ris", 13))
-                .addPersonToResult(new Person("Teen", "AgeR", 23))
-                .addPersonToResult(new Person("Ben", "Ten", 2));
+        return new CategorizedPersons(
+                List.of(
+                        new Person("Han", "Solo", 33),
+                        new Person("Hun", "Cute", 53),
+                        new Person("Kan", "Nibal", 99),
+                        new Person("Tet", "Ris", 13),
+                        new Person("Teen", "AgeR", 23),
+                        new Person("Ben", "Ten", 2)
+                ));
     }
 }
